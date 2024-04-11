@@ -1,0 +1,10 @@
+---
+- name: Gather OS info and save to file
+  hosts: all
+  tasks:
+    - name: Write OS info to file
+      delegate_to: localhost
+      lineinfile:
+        dest: ./os_info.txt
+        line: "{{ ansible_fqdn }}: {{ ansible_distribution_version }}"
+        create: true
